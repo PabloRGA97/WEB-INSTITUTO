@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admisiones - Academia Secreta de Cazadores</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="../icono.png">
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">Academia Secreta de Cazadores</a>
+    <nav>
+      <a href="../index.html">Inicio</a>
+      <a href="la-academia.html">La Academia</a>
+      <a href="programa.html">Programa</a>
+      <a href="administracion.html">Administración</a>
+      <a href="orientacion.html">Orientación</a>
+      <a href="aula-virtual.html">Aula Virtual</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- MENSAJE PARA USUARIOS SIN SESIÓN -->
+  <section id="bloqueo" class="page-section" style="display:none; text-align:center;">
+    <h2 style="color:var(--dorado-nen); margin-bottom:1.2rem;">
+      Información Reservada Exclusivamente para Cazadores Registrados
+    </h2>
+    <p style="font-size:1.2rem;">
+      Esta sección es accesible solo para cazadores con autorización oficial.
+    </p>
+    <p style="margin-top:1rem;">
+      Por favor <a href="aula-virtual.html" style="color:var(--dorado-nen); text-decoration:underline;">inicia sesión</a> para continuar.
+    </p>
+  </section>
+
+  <!-- CONTENIDO PRIVADO -->
+  <section id="contenido-privado" class="page-section" style="display:none;">
+    <h2>Solicitud de Admisión</h2>
+    <div class="form-card" style="max-width:500px; margin:auto;">
+      <form id="form-admision">
+        <label>Nombre</label>
+        <input type="text" required>
+        <label>Motivo para unirte a la Academia</label>
+        <textarea required></textarea>
+        <label>Tipo de Aura (si lo conoces)</label>
+        <select>
+          <option value="">No especificado</option>
+          <option>Intensificación</option>
+          <option>Emisión</option>
+          <option>Manipulación</option>
+          <option>Transmutación</option>
+          <option>Materialización</option>
+          <option>Especialización</option>
+        </select>
+        <button type="submit" class="btn-test">Enviar Solicitud</button>
+      </form>
+      <p id="admision-msg" class="msg"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Academia Secreta de Cazadores — Todos los derechos de los usuarios pertenecen a la Asociación de Cazadores.</p>
+    <p class="quote">"Solo quienes comprenden el vacío pueden liberar su verdadero aura."</p>
+    <p class="quote">Isaac Netero. Presidente de la Asociación de Cazadores</p>
+  </footer>
+
+  <script>
+    const sesionActiva = localStorage.getItem("sesionActiva");
+
+    if (sesionActiva === "true") {
+      // Mostrar contenido real
+      document.getElementById("contenido-privado").style.display = "block";
+      document.getElementById("footer-privado").style.display = "block";
+    } else {
+      // Mostrar mensaje de bloqueo
+      document.getElementById("bloqueo").style.display = "block";
+    }
+
+    // Enviar solicitud
+    document.getElementById("form-admision").addEventListener("submit", function(e){
+      e.preventDefault();
+      document.getElementById("admision-msg").textContent =
+        "✔ Solicitud enviada al Consejo Nen. Recibirás una respuesta en breve.";
+      document.getElementById("admision-msg").style.color = "var(--dorado-nen)";
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula Virtual - Academia Secreta de Cazadores</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="../icono.png">
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">Academia Secreta de Cazadores</a>
+    <nav>
+      <a href="../index.html">Inicio</a>
+      <a href="la-academia.html">La Academia</a>
+      <a href="programa.html">Programa</a>
+      <a href="administracion.html">Administración</a>
+      <a href="orientacion.html">Orientación</a>
+      <a href="aula-virtual.html" class="active">Aula Virtual</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="page-section">
+    <h2>Aula Virtual</h2>
+    <p class="section-intro">
+      Accede a misiones prácticas, foros internos y módulos de entrenamiento Nen.
+    </p>
+
+    <div class="login-register-container">
+      <!-- LOGIN -->
+      <div class="form-card" id="login-card">
+        <h3>Inicio de Sesión</h3>
+        <form id="login-form">
+          <label for="login-id">Licencia de Cazador</label>
+          <input type="text" id="login-id" maxlength="8" minlength="8" placeholder="Ej: 12345678" required>
+          <label for="login-pass">Contraseña</label>
+          <input type="password" id="login-pass" placeholder="••••••••" required>
+          <button type="submit" class="btn-test">Iniciar Sesión</button>
+        </form>
+        <p id="login-msg" class="msg"></p>
+      </div>
+
+      <!-- REGISTRO -->
+      <div class="form-card" id="register-card">
+        <h3>Registro de Nuevo Usuario</h3>
+        <form id="register-form">
+          <label for="reg-nombre">Nombre</label>
+          <input type="text" id="reg-nombre" required>
+          <label for="reg-apellidos">Apellidos</label>
+          <input type="text" id="reg-apellidos" required>
+          <label for="reg-id">Licencia de Cazador</label>
+          <input type="text" id="reg-id" maxlength="8" minlength="8" placeholder="8 cifras" required>
+          <label for="reg-pass">Contraseña</label>
+          <input type="password" id="reg-pass" required>
+          <label for="reg-pass2">Confirmar Contraseña</label>
+          <input type="password" id="reg-pass2" required>
+          <button type="submit" class="btn-test">Registrar</button>
+        </form>
+
+        <p id="register-msg" class="msg"></p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Academia Secreta de Cazadores</p>
+    <p class="quote">"El conocimiento es el primer paso para dominar el aura."</p>
+  </footer>
+
+  <script>
+    /* Función para guardar usuario real*/
+
+    function guardarUsuario(usuario) {
+      let usuarios = JSON.parse(localStorage.getItem("usuariosNen")) || [];
+
+      usuarios.push(usuario);
+      localStorage.setItem("usuariosNen", JSON.stringify(usuarios));
+    }
+
+    function buscarUsuario(id) {
+      let usuarios = JSON.parse(localStorage.getItem("usuariosNen")) || [];
+      return usuarios.find(u => u.id === id);
+    }
+
+    /* LOGIN REAL */
+    document.getElementById("login-form").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const id = document.getElementById("login-id").value;
+      const pass = document.getElementById("login-pass").value;
+
+      const msg = document.getElementById("login-msg");
+      const card = document.getElementById("login-card");
+
+      card.classList.remove("aura-error");
+      msg.textContent = "";
+
+      const usuario = buscarUsuario(id);
+
+      if (!usuario || usuario.password !== pass) {
+        msg.textContent = "❌ Usuario o contraseña incorrectos.";
+        msg.style.color = "red";
+        card.classList.add("aura-error");
+        return;
+      }
+
+      msg.textContent = "✔ Sesión iniciada correctamente.";
+      msg.style.color = "var(--dorado-nen)";
+
+      localStorage.setItem("sesionActiva", "true");
+      localStorage.setItem("usuarioActivo", usuario.id);
+    });
+
+    /* REGISTRO REAL */
+    document.getElementById("register-form").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const nombre = document.getElementById("reg-nombre").value;
+      const apellidos = document.getElementById("reg-apellidos").value;
+      const id = document.getElementById("reg-id").value;
+      const pass1 = document.getElementById("reg-pass").value;
+      const pass2 = document.getElementById("reg-pass2").value;
+
+      const msg = document.getElementById("register-msg");
+      const card = document.getElementById("register-card");
+
+      card.classList.remove("aura-error");
+      card.classList.remove("aura-success");
+
+      if (pass1 !== pass2) {
+        msg.textContent = "❌ Las contraseñas no coinciden.";
+        msg.style.color = "red";
+        card.classList.add("aura-error");
+        return;
+      }
+
+      if (buscarUsuario(id)) {
+        msg.textContent = "❌ Ya existe un cazador con esa licencia.";
+        msg.style.color = "red";
+        card.classList.add("aura-error");
+        return;
+      }
+
+      const usuarioNuevo = {
+        id: id,
+        nombre: nombre,
+        apellidos: apellidos,
+        password: pass1
+      };
+
+      guardarUsuario(usuarioNuevo);
+
+      msg.textContent = "Registro completado. Ya puedes iniciar sesión.";
+      msg.style.color = "var(--dorado-nen)";
+      card.classList.add("aura-success");
+    });
+  </script>
+
+</body>
+</html>

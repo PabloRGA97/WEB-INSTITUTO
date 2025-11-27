@@ -1,0 +1,956 @@
+/* CSS COMPLETO */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Poppins:wght@300;400;600&family=Playfair+Display:ital@1&display=swap");
+
+:root {
+    --negro-aura: #0A0A0C;
+    --verde-esmeralda: #0F3D3E;
+    --gris-acero: #2E2E2E;
+    --dorado-nen: #C9A227;
+    --rojo-intensificacion: #B82020;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--negro-aura);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+header {
+    background-color: rgba(15, 61, 62, 0.98);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem 2rem;
+    z-index: 1000;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.7);
+    border-bottom: 1px solid rgba(201,162,39,0.3);
+}
+
+header a.logo {
+    text-decoration: none;
+    font-family: "Cinzel Decorative", serif;
+    color: var(--dorado-nen);
+    font-size: 1.7rem;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 10px rgba(201,162,39,0.5);
+    transition: transform 0.2s ease, text-shadow 0.3s ease;
+}
+
+header a.logo:hover {
+    text-shadow: 0 0 20px rgba(201,162,39,0.8);
+    transform: scale(1.03);
+}
+
+/* NAVEGACIÓN */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: var(--dorado-nen);
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--dorado-nen);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: radial-gradient(circle at center, rgba(201,162,39,0.15) 0%, transparent 70%);
+    padding: 0 1rem;
+    margin-top: 100px;
+}
+
+.hero h2 {
+    font-family: "Cinzel Decorative", serif;
+    font-size: 2.4rem;
+    color: var(--dorado-nen);
+    max-width: 850px;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    text-shadow: 0 0 12px rgba(201,162,39,0.4);
+}
+
+/* VIDEO */
+.video-container {
+  margin-bottom: 2rem;
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+  aspect-ratio: 16 / 9;
+  border: 2px solid var(--dorado-nen);
+  box-shadow: 0 0 25px rgba(201,162,39,0.3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Asegura que tanto el iframe como el video ocupen todo el contenedor */
+.video-container iframe,
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* se adapta al espacio sin deformarse */
+  border: none;
+}
+
+/* Opcional: suaviza bordes del video local */
+.video-container video {
+  border-radius: 8px;
+}
+
+
+/* BOTÓN */
+.hero button {
+    background-color: transparent;
+    border: 2px solid var(--dorado-nen);
+    color: var(--dorado-nen);
+    padding: 0.9rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero button:hover {
+    background-color: var(--dorado-nen);
+    color: var(--negro-aura);
+    box-shadow: 0 0 20px var(--dorado-nen);
+    transform: scale(1.05);
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--gris-acero);
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #ccc;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(201,162,39,0.3);
+}
+
+footer p {
+    margin: 0.3rem 0;
+}
+
+footer .quote {
+    font-style: italic;
+    color: var(--dorado-nen);
+    font-family: "Playfair Display", serif;
+    margin-top: 0.5rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 0.8rem 1rem;
+    }
+
+    nav {
+        justify-content: center;
+        text-align: center;
+        gap: 0.8rem;
+    }
+
+    header a.logo {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* ===== LA ACADEMIA ===== */
+.academy-section {
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  background: radial-gradient(circle at center, rgba(201,162,39,0.1) 0%, transparent 70%);
+}
+
+.academy-section h2 {
+  font-family: "Cinzel Decorative", serif;
+  color: var(--dorado-nen);
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  text-shadow: 0 0 10px rgba(201,162,39,0.3);
+}
+
+.academy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: stretch;
+}
+
+.academy-card {
+  background-color: rgba(15,61,62,0.8);
+  border: 2px solid var(--dorado-nen);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  width: 100%;
+  max-width: 340px;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.academy-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(201,162,39,0.5);
+}
+
+.academy-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  filter: brightness(0.9);
+  transition: filter 0.3s ease;
+}
+
+.academy-card:hover img {
+  filter: brightness(1.1);
+}
+
+.academy-card h3 {
+  font-family: "Cinzel Decorative", serif;
+  color: var(--dorado-nen);
+  margin: 1rem 0 0.5rem;
+}
+
+.academy-card p {
+  font-size: 0.9rem;
+  color: #ccc;
+  padding: 0 1rem 1.5rem;
+}
+
+/* ===== SUBPÁGINAS DE LA ACADEMIA ===== */
+.page-section {
+  padding: 8rem 2rem 4rem;
+  background: radial-gradient(circle at center, rgba(201,162,39,0.1) 0%, transparent 70%);
+  text-align: center;
+}
+
+.page-section h2 {
+  font-family: "Cinzel Decorative", serif;
+  color: var(--dorado-nen);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(201,162,39,0.3);
+}
+
+.page-content {
+  max-width: 900px;
+  margin: 0 auto;
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.page-content img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid var(--dorado-nen);
+  margin-bottom: 2rem;
+}
+
+.page-content ul {
+  text-align: left;
+  margin: 1rem auto 2rem;
+  max-width: 700px;
+  color: #ddd;
+}
+
+.page-content ul li {
+  margin-bottom: 0.8rem;
+}
+
+/* ===== FUNDAMENTOS Y TEST ===== */
+.nen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.nen-card {
+  background-color: rgba(15,61,62,0.8);
+  border: 2px solid var(--dorado-nen);
+  border-radius: 12px;
+  padding: 1rem;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.nen-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(201,162,39,0.4);
+}
+
+.nen-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+/* Test Nen */
+.btn-test {
+  display: inline-block;
+  background-color: transparent;
+  border: 2px solid var(--dorado-nen);
+  color: var(--dorado-nen);
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.btn-test:hover {
+  background-color: var(--dorado-nen);
+  color: var(--negro-aura);
+  box-shadow: 0 0 15px var(--dorado-nen);
+}
+
+.test-section {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.resultado {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: rgba(15,61,62,0.8);
+  border: 2px solid var(--dorado-nen);
+  border-radius: 10px;
+  color: #fff;
+}
+
+.disclaimer {
+  background-color: rgba(15,61,62,0.7);
+  border: 2px solid var(--dorado-nen);
+  border-radius: 8px;
+  padding: 1rem;
+  color: #e6e6e6;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.resultado ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem auto;
+  max-width: 400px;
+}
+
+.resultado li {
+  margin: 0.4rem 0;
+  padding: 0.5rem;
+  border-bottom: 1px solid rgba(201,162,39,0.4);
+}
+
+/* ===== ANIMACIÓN DE AURA DORADA ===== */
+@keyframes aura {
+  0% {
+    box-shadow: 0 0 10px rgba(201,162,39,0.3), 0 0 20px rgba(201,162,39,0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(201,162,39,0.6), 0 0 50px rgba(201,162,39,0.4);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(201,162,39,0.3), 0 0 20px rgba(201,162,39,0.3);
+  }
+}
+
+.aura-dorada {
+  background-color: rgba(201,162,39,0.15);
+  border-radius: 8px;
+  color: var(--dorado-nen);
+  font-weight: bold;
+  animation: aura 2.5s infinite ease-in-out;
+}
+
+.aura-text {
+  color: var(--dorado-nen);
+  text-shadow: 0 0 10px rgba(201,162,39,0.8);
+}
+
+/* ===== ESTILO MEJORADO PARA LAS RESPUESTAS DEL TEST ===== */
+.question {
+  margin-bottom: 2rem;
+  text-align: left;
+  background-color: rgba(15,61,62,0.3);
+  padding: 1.2rem 1.5rem;
+  border: 1px solid rgba(201,162,39,0.3);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.question:hover {
+  box-shadow: 0 0 15px rgba(201,162,39,0.2);
+}
+
+.question p {
+  font-weight: bold;
+  color: var(--dorado-nen);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.question label {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #e0e0e0;
+  border: 1px solid rgba(201,162,39,0.3);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  margin: 0.4rem 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.question label:hover {
+  background-color: rgba(201,162,39,0.1);
+  box-shadow: 0 0 8px rgba(201,162,39,0.3);
+  transform: translateX(3px);
+}
+
+.question input[type="radio"] {
+  accent-color: var(--dorado-nen);
+  transform: scale(1.2);
+  margin-right: 0.6rem;
+}
+
+/* Mejor alineación en pantallas pequeñas */
+@media (max-width: 768px) {
+  .question {
+    padding: 1rem;
+  }
+  .question label {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== PERSONAL DOCENTE (2 filas de 3) ===== */
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.staff-card {
+  background-color: rgba(15,61,62,0.8);
+  border: 2px solid var(--dorado-nen);
+  border-radius: 12px;
+  padding: 1rem;
+  color: #fff;
+  text-align: center;
+  transition: all 0.3s ease;
+  max-width: 300px;
+  cursor: pointer;
+}
+
+.staff-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(201,162,39,0.4);
+}
+
+.staff-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(201,162,39,0.4);
+  margin-bottom: 1rem;
+  transition: all 0.4s ease;
+}
+
+.staff-card:hover img {
+  filter: brightness(1.2);
+  box-shadow: 0 0 20px rgba(201,162,39,0.6), 0 0 40px rgba(201,162,39,0.4);
+  transform: scale(1.05);
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .staff-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .staff-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ===== CERTIFICACIONES ===== */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  margin-top: 2rem;
+}
+
+.cert-card {
+  background-color: rgba(15,61,62,0.8);
+  border: 2px solid var(--dorado-nen);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  color: #fff;
+  max-width: 320px;
+  transition: all 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(201,162,39,0.4);
+}
+
+.cert-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(201,162,39,0.4);
+  margin-bottom: 1rem;
+}
+
+
+/* ===== EFECTO AURA EN IMÁGENES DEL PERSONAL ===== */
+.staff-card img {
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.staff-card:hover img {
+  filter: brightness(1.2);
+  box-shadow: 0 0 20px rgba(201,162,39,0.6), 0 0 40px rgba(201,162,39,0.4);
+  transform: scale(1.05);
+}
+
+/* ===== ADMISIONES ===== */
+.intro-text {
+  text-align: center;
+  font-style: italic;
+  color: #ddd;
+  margin-bottom: 2rem;
+}
+
+.admision-form {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  background-color: rgba(15,61,62,0.6);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px solid var(--dorado-nen);
+  box-shadow: 0 0 20px rgba(201,162,39,0.2);
+}
+
+.admision-form label {
+  display: block;
+  margin-top: 1rem;
+  color: var(--dorado-nen);
+  font-weight: bold;
+}
+
+.admision-form input,
+.admision-form select,
+.admision-form textarea {
+  width: 100%;
+  margin-top: 0.4rem;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid rgba(201,162,39,0.3);
+  background-color: rgba(0,0,0,0.4);
+  color: #fff;
+}
+
+.admision-form textarea {
+  resize: none;
+}
+
+.admision-form input:focus,
+.admision-form select:focus,
+.admision-form textarea:focus {
+  outline: none;
+  border-color: var(--dorado-nen);
+  box-shadow: 0 0 8px rgba(201,162,39,0.3);
+}
+
+.mensaje-exito {
+  text-align: center;
+  background-color: rgba(15,61,62,0.6);
+  border: 2px solid var(--dorado-nen);
+  border-radius: 10px;
+  padding: 2rem;
+  color: #fff;
+  max-width: 600px;
+  margin: 2rem auto;
+  box-shadow: 0 0 20px rgba(201,162,39,0.3);
+}
+
+.aura-animada {
+  animation: auraGlow 2.5s infinite ease-in-out;
+}
+
+@keyframes auraGlow {
+  0% { box-shadow: 0 0 10px rgba(201,162,39,0.3); }
+  50% { box-shadow: 0 0 30px rgba(201,162,39,0.6); }
+  100% { box-shadow: 0 0 10px rgba(201,162,39,0.3); }
+}
+
+.reglas-academia {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.reglas-academia h3 {
+  color: var(--dorado-nen);
+  font-family: 'Cinzel Decorative', serif;
+  margin-bottom: 1rem;
+}
+
+.reglas-academia ul {
+  list-style: none;
+  padding: 0;
+  color: #ccc;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.reglas-academia li {
+  margin-bottom: 0.8rem;
+}
+
+.staff-card:hover img {
+  filter: brightness(1.2);
+  box-shadow: 0 0 20px rgba(201,162,39,0.6), 0 0 40px rgba(201,162,39,0.4);
+  transform: scale(1.05);
+}
+
+/* ===== MODAL PROFESORES ===== */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: rgba(15,61,62,0.9);
+  border: 2px solid var(--dorado-nen);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 600px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 25px rgba(201,162,39,0.4);
+  animation: auraPop 0.4s ease-out;
+}
+
+.modal-content blockquote {
+  margin-top: 1rem;
+  font-style: italic;
+  color: var(--dorado-nen);
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: var(--dorado-nen);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@keyframes auraPop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+/* ===== ORIENTACIÓN ===== */
+.page-section {
+  padding: 6rem 2rem 4rem;
+  background: radial-gradient(circle at center, rgba(201,162,39,0.06) 0%, transparent 70%);
+  text-align: left;
+}
+
+.page-section h2 {
+  text-align: center;
+  font-family: 'Cinzel Decorative', serif;
+  color: var(--dorado-nen);
+  margin-bottom: 1.5rem;
+}
+
+.page-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #ddd;
+}
+
+.page-content h3 {
+  color: var(--dorado-nen);
+  margin-top: 1.2rem;
+}
+
+.page-content ul {
+  margin-left: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.prof-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.prof-list article {
+  background-color: rgba(15,61,62,0.6);
+  border: 1px solid rgba(201,162,39,0.25);
+  padding: 1rem;
+  border-radius: 10px;
+  color: #e6e6e6;
+}
+
+.prof-list h4 {
+  color: var(--dorado-nen);
+  margin-bottom: 0.4rem;
+}
+
+.nota {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: #cfcfcf;
+  text-align: center;
+}
+
+
+/* ===== AULA VIRTUAL ===== */
+
+.login-register-container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.form-card {
+  background-color: rgba(15,61,62,0.7);
+  padding: 2rem;
+  border: 2px solid var(--dorado-nen);
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 0 20px rgba(201,162,39,0.25);
+}
+
+.form-card h3 {
+  color: var(--dorado-nen);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.form-card label {
+  display: block;
+  margin-top: 1rem;
+  color: var(--dorado-nen);
+  font-weight: bold;
+}
+
+.form-card input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border-radius: 8px;
+  border: 1px solid rgba(201,162,39,0.4);
+  background-color: rgba(0,0,0,0.4);
+  color: #fff;
+}
+
+.msg {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ===== AURA PARA REGISTRO Y ERRORES ===== */
+
+/* Aura roja (error) */
+@keyframes auraError {
+  0% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.3); }
+  50% { box-shadow: 0 0 18px rgba(255, 0, 0, 0.7); }
+  100% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.3); }
+}
+
+.aura-error {
+  animation: auraError 0.9s ease-out;
+  border-color: red !important;
+}
+
+/* Aura dorada (éxito) */
+@keyframes auraSuccess {
+  0% { box-shadow: 0 0 5px rgba(201,162,39,0.4); }
+  50% { box-shadow: 0 0 25px rgba(201,162,39,0.9); }
+  100% { box-shadow: 0 0 5px rgba(201,162,39,0.4); }
+}
+
+.aura-success {
+  animation: auraSuccess 1.2s ease-out;
+  border-color: var(--dorado-nen) !important;
+}
+
+/* ===== CONTACTO ===== */
+
+.contacto-lista {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.5rem;
+}
+
+.contacto-item {
+  background-color: rgba(15,61,62,0.65);
+  border: 2px solid var(--dorado-nen);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(201,162,39,0.25);
+}
+
+.contacto-item h3 {
+  color: var(--dorado-nen);
+  margin-bottom: 0.5rem;
+}
+
+/* === Arreglo imagen prueba del agua === */
+
+.hatsu-img-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.hatsu-img-container img {
+    width: 100%;
+    height: auto; 
+    display: block;
+    border-radius: 12px;
+    border: 2px solid var(--dorado-nen);
+    box-shadow: 0 0 15px rgba(201,162,39,0.25);
+}
+
+/* Separación del texto en la página Administración */
+.admin-intro {
+    margin-bottom: 2.5rem !important;
+}
+
+/* Ajustes visuales del Test Nen */
+.test-question {
+    font-size: 1.3rem !important; /* antes era 1.1 o 1.2 */
+    margin-bottom: 0.3rem !important; /* reduce espacio inicial */
+}
+
+.test-options {
+    margin-top: 0.4rem !important; /* menos espacio entre pregunta y respuestas */
+}
+
+
+/* Rejilla 3x2 para Contacto */
+.contacto-lista {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* Ajuste responsive para móvil */
+@media (max-width: 900px) {
+    .contacto-lista {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .contacto-lista {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Ajuste de imágenes en tarjetas de Administración */
+.academy-card img {
+    width: 100%;
+    height: 200px;   
+    object-fit: contain; 
+    padding: 10px;
+    display: block;
+    margin: 0 auto;
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal - Academia Secreta de Cazadores</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="../icono.png">
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">Academia Secreta de Cazadores</a>
+    <nav>
+      <a href="../index.html">Inicio</a>
+      <a href="la-academia.html">La Academia</a>
+      <a href="programa.html">Programa</a>
+      <a href="administracion.html">Administración</a>
+      <a href="orientacion.html">Orientación</a>
+      <a href="aula-virtual.html">Aula Virtual</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="page-section">
+    <h2>Personal Docente</h2>
+    <p class="section-intro">La Academia cuenta con cazadores de renombre que guían a los estudiantes en el dominio del Nen. Cada uno representa una faceta distinta del poder, la estrategia y la filosofía del aura.</p>
+
+    <div class="staff-grid">
+      <div class="staff-card" data-profesor="biscuit">
+        <img src="../imagenes/biscuit.jpg" alt="Biscuit Krueger">
+        <h3>Biscuit Krueger</h3>
+        <p><em>Instructora de Aura Avanzada</em></p>
+      </div>
+
+      <div class="staff-card" data-profesor="wing">
+        <img src="../imagenes/wing.jpg" alt="Wing">
+        <h3>Wing</h3>
+        <p><em>Profesor de Fundamentos Nen</em></p>
+      </div>
+
+      <div class="staff-card" data-profesor="kite">
+        <img src="../imagenes/kite.jpg" alt="Kite">
+        <h3>Kite</h3>
+        <p><em>Instructor de Combate Estratégico</em></p>
+      </div>
+
+      <div class="staff-card" data-profesor="morel">
+        <img src="../imagenes/morel.jpg" alt="Morel Mackernasey">
+        <h3>Morel Mackernasey</h3>
+        <p><em>Instructor de Control Avanzado</em></p>
+      </div>
+
+      <div class="staff-card" data-profesor="knov">
+        <img src="../imagenes/knov.jpg" alt="Knov">
+        <h3>Knov</h3>
+        <p><em>Profesor de Espacio y Sigilo Nen</em></p>
+      </div>
+
+      <div class="staff-card" data-profesor="tsezguerra">
+        <img src="../imagenes/tsezguerra.jpg" alt="Tsezguerra">
+        <h3>Tsezguerra</h3>
+        <p><em>Mentor de Estrategias Avanzadas</em></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Academia Secreta de Cazadores — Todos los derechos de los usuarios pertenecen a la Asociación de Cazadores.</p>
+    <p class="quote">"Solo quienes comprenden el vacío pueden liberar su verdadero aura."</p>
+    <p class="quote">Isaac Netero. Presidente de la Asociación de Cazadores</p>
+  </footer>
+
+  <div id="modal-profesor" class="modal-overlay" style="display:none;">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <div id="modal-detalle"></div>
+    </div>
+  </div>
+
+  <script>
+  const datosProfesores = {
+    biscuit: {
+      nombre: "Biscuit Krueger",
+      especialidad: "Materialización",
+      descripcion: "Maestra legendaria que combina belleza y brutalidad. Su enseñanza se centra en el refinamiento del aura y el fortalecimiento interno.",
+      cita: "“La belleza exterior no sirve sin una mente refinada.”"
+    },
+    wing: {
+      nombre: "Wing",
+      especialidad: "Emisión",
+      descripcion: "Guía a los estudiantes en los fundamentos del Nen. Es paciente, disciplinado y firme en sus enseñanzas.",
+      cita: "“La paciencia es el primer paso hacia la iluminación del aura.”"
+    },
+    kite: {
+      nombre: "Kite",
+      especialidad: "Materialización",
+      descripcion: "Cazador ético y estratega. Enseña el valor de la calma incluso en los momentos más peligrosos.",
+      cita: "“Cada golpe debe tener un propósito, cada decisión una causa.”"
+    },
+    morel: {
+      nombre: "Morel Mackernasey",
+      especialidad: "Emisión",
+      descripcion: "Veterano cazador y maestro del humo Nen. Enseña control, adaptación y dominio del entorno.",
+      cita: "“Un cazador no necesita fuerza bruta, sino control absoluto de su aura.”"
+    },
+    knov: {
+      nombre: "Knov",
+      especialidad: "Materialización",
+      descripcion: "Especialista en portales dimensionales Nen. Su método es meticuloso, enfocado en la precisión y la seguridad.",
+      cita: "“El poder no sirve si no puedes ocultarlo en el momento justo.”"
+    },
+    tsezguerra: {
+      nombre: "Tsezguerra",
+      especialidad: "Emisión",
+      descripcion: "Experto táctico con amplia experiencia en misiones de alto riesgo. Entrena la mente y la estrategia por encima del instinto.",
+      cita: "“La paciencia y el cálculo son las armas de los verdaderos cazadores.”"
+    }
+  };
+
+  // Modal logic
+  const modal = document.getElementById("modal-profesor");
+  const modalContent = document.getElementById("modal-detalle");
+  const closeBtn = document.querySelector(".modal-close");
+
+  document.querySelectorAll(".staff-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const prof = card.dataset.profesor;
+      const data = datosProfesores[prof];
+      modalContent.innerHTML = `
+        <h2 class="aura-text">${data.nombre}</h2>
+        <p><strong>Especialidad Nen:</strong> ${data.especialidad}</p>
+        <p>${data.descripcion}</p>
+        <blockquote>“${data.cita}”</blockquote>
+      `;
+      modal.style.display = "flex";
+    });
+  });
+
+  closeBtn.addEventListener("click", () => modal.style.display = "none");
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.style.display = "none";
+  });
+  </script>
+
+</body>
+</html>

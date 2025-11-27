@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - Academia Secreta de Cazadores</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="../icono.png">
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo">Academia Secreta de Cazadores</a>
+    <nav>
+      <a href="../index.html">Inicio</a>
+      <a href="la-academia.html">La Academia</a>
+      <a href="programa.html">Programa</a>
+      <a href="administracion.html">Administración</a>
+      <a href="orientacion.html">Orientación</a>
+      <a href="aula-virtual.html">Aula Virtual</a>
+      <a href="contacto.html" class="active">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- MENSAJE PARA USUARIOS SIN SESIÓN -->
+  <section id="bloqueo" class="page-section" style="display:none; text-align:center;">
+    <h2 style="color:var(--dorado-nen); margin-bottom:1.2rem;">
+      Información Reservada
+    </h2>
+    <p style="font-size:1.3rem;">
+      Esta sección está restringida exclusivamente para cazadores con autorización del Consejo Nen.
+    </p>
+    <p style="margin-top:1rem;">
+      Por favor <a href="aula-virtual.html" style="color:var(--dorado-nen); text-decoration:underline;">inicia sesión</a> para continuar.
+    </p>
+  </section>
+
+  <!-- CONTENIDO PRIVADO (solo si hay sesión iniciada) -->
+  <section id="contenido-privado" class="page-section" style="display:none;">
+    <h2>Contacto de la Academia</h2>
+    <p class="section-intro">Solo los cazadores con acceso autorizado pueden ver esta información.</p>
+
+    <div class="contacto-lista">
+      <div class="contacto-item">
+        <h3>📍 Asociación de Cazadores (Sede Central)</h3>
+        <p>Tel: +99 987 654 321</p>
+        <p>Ubicación: República de Padokea</p>
+      </div>
+
+      <div class="contacto-item">
+        <h3>📍 Torre Celestial</h3>
+        <p>Tel: +88 555 321 900</p>
+        <p>Planta 180 – Recepción de Luchadores</p>
+      </div>
+
+      <div class="contacto-item">
+        <h3>📍 Ciudad de Yorkshin</h3>
+        <p>Tel: +87 444 220 110</p>
+        <p>Oficina de Información de Cazadores</p>
+      </div>
+
+      <div class="contacto-item">
+        <h3>📍 Isla Ballena</h3>
+        <p>Tel: +86 111 900 333</p>
+        <p>Muelle Principal – Terminal Nen</p>
+      </div>
+
+      <div class="contacto-item">
+        <h3>📍 Ciudad Meteor</h3>
+        <p>Tel: +55 000 666 999</p>
+        <p>Acceso restringido – Solo personal autorizado</p>
+      </div>
+
+      <div class="contacto-item">
+        <h3>📍 Nación Kakin – Palacio Real</h3>
+        <p>Tel: +77 888 101 101</p>
+        <p>Departamento de Seguridad Nen</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer-privado" style="display:none;">
+    <p>© 2025 Academia Secreta de Cazadores</p>
+    <p class="quote">"El mundo es vasto… pero el aura revela a los verdaderos cazadores."</p>
+  </footer>
+
+  <script>
+    const sesionActiva = localStorage.getItem("sesionActiva");
+    if (sesionActiva === "true") {
+      // Mostrar contenido autorizado
+      document.getElementById("contenido-privado").style.display = "block";
+      document.getElementById("footer-privado").style.display = "block";
+    } else {
+      // Mostrar mensaje de bloqueo
+      document.getElementById("bloqueo").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
